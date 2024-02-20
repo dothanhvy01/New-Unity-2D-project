@@ -7,62 +7,41 @@ public class Frog_Movement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator an;
     private bool isGrounded = false;
-    private bool isJumping = false;
-    private string currentAnimationState;
     private Collider2D cl;
 
     public LayerMask groundLayer;
     public float jumpForce = 5f;
     public float moveSpeed = 5f;
-    public float idleTime = 1f;
+    public float jumpDelayTime = 1f;
+    public bool moving = false;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        an = GetComponent<Animator>();
-        cl = GetComponent<Collider2D>();    
+        rb = transform.GetComponent<Rigidbody2D>();
+        an = transform.GetComponent<Animator>();
+        cl = transform.GetComponent<Collider2D>();    
     }
 
     void Update()
     {
-        // Kiểm tra xem nhân vật có chạm đất không
         isGrounded = Physics2D.IsTouchingLayers(cl, groundLayer);
 
-        // Nhảy khi nhấn phím Enter và nhân vật đang chạm đất và không đang nhảy
-        if (Input.GetKeyDown(KeyCode.Return) && isGrounded && !isJumping)
+        if (moving && isGrounded)
         {
-            isJumping = true;
-            rb.velocity = new Vector2(moveSpeed, jumpForce); // Nhảy về phía bên phải
-            ChangeAnimationState("Frog_jump"); // Chạy animation nhảy
-        }
-
-        // Nếu nhân vật đang chạm đất và đang nhảy
-        if (isGrounded && isJumping)
-        {
-            ChangeAnimationState("Frog_idle"); // Dừng animation nhảy
-            isJumping = false; // Đặt lại cờ nhảy
-
-            // Gọi hàm nghỉ 1 giây trước khi nhảy tiếp
-            Invoke("JumpAfterDelay", idleTime);
+            Invoke("Jump", jumpDelayTime);
         }
     }
-
-    void JumpAfterDelay()
+    private void FixedUpdate()
     {
-        // Nếu đang chạm đất và không đang nhảy
-        if (isGrounded && !isJumping)
-        {
-            isJumping = true;
-            rb.velocity = new Vector2(moveSpeed, jumpForce); // Nhảy về phía bên phải
-            ChangeAnimationState("Frog_jump"); // Chạy animation nhảy
-        }
+        an.SetFloat("yVelocity", rb.velocity.y);
     }
-    void ChangeAnimationState(string newAnimationState)
+
+    void Jump()
     {
-        if (currentAnimationState == newAnimationState) return;
-
-        an.Play(newAnimationState);
-
-        currentAnimationState = newAnimationState;
+        if (isGrounded)
+        {
+            rb.velocity = new Vector2(moveSpeed, jumpForce);
+            an.SetBool("isJumping", true);
+        }
     }
 }
