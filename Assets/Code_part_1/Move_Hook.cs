@@ -33,7 +33,7 @@ public class Move_Hook : MonoBehaviour
             StartCoroutine(MoveToNextPosition());
             moving = false;
         }
-        if (touching || back)
+        if (touching && back)
         {
             StartCoroutine(MoveBackToNextPosition());
             back = false;
@@ -48,39 +48,22 @@ public class Move_Hook : MonoBehaviour
     {
         while (currentIndex < movePoss.Length)
         {
-            if (!touching)
-            {
-                Vector2 direction = movePoss[currentIndex].position - transform.position;
-                float distance = direction.magnitude;
-                //Vector2 targetPosition = movePoss[currentIndex].position;
-                //while ((Vector2)transform.position != targetPosition)
-                //{
-                //    transform.Translate(direction.normalized * hookSpeed * Time.deltaTime);
-                //    yield return null;
-                //}
-                transform.Translate(direction.normalized * hookSpeed * Time.deltaTime);
+            Transform target = movePoss[currentIndex];
 
-                if (distance < 0.1f)
-                {
-                    currentIndex++;
-                }
+            while (transform.position != target.position && !touching)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, target.position, hookSpeed * Time.deltaTime);
+                yield return null;
             }
-            else
+
+            if (currentIndex == movePoss.Length - 1 || touching)
             {
                 back = true;
-                currentIndex = movePoss.Length - 2;
-                break;
-            }
-            yield return null;
-
-            if (currentIndex == movePoss.Length - 1)
-            {
-                back = true;
-                currentIndex = movePoss.Length - 2;
-                break;
+                currentIndex = movePoss.Length - 1 - (movePoss.Length - currentIndex);
+                yield break;
             }
 
-            //currentIndex++;
+            currentIndex++;
         }
     }
 
