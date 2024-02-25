@@ -19,7 +19,7 @@ public class Frog_Movement : MonoBehaviour
     {
         rb = transform.GetComponent<Rigidbody2D>();
         an = transform.GetComponent<Animator>();
-        cl = transform.GetComponent<Collider2D>();    
+        cl = transform.GetComponent<Collider2D>();
     }
 
     void Update()
