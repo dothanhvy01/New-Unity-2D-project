@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - day
+  - night
+  - hidden_land
+  - switch_mode
+  - trap
+  - floor
   layers:
   - Default
   - TransparentFX
