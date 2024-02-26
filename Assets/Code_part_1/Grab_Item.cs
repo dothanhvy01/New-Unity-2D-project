@@ -2,18 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Grab_Item : MonoBehaviour
 {
     [SerializeField] private LayerMask itemLayer;
+    public bool drop = false;
 
-    [HideInInspector]public bool touching = false;
+    [HideInInspector] public bool touching = false;
     private BoxCollider2D cl;
 
     // Start is called before the first frame update
     void Start()
     {
         cl = transform.GetComponent<BoxCollider2D>();
+    }
+
+    private void Update()
+    {
+        if (drop)
+        {
+            Drop();
+            drop = false;
+        }
     }
 
     private void FixedUpdate()
@@ -27,7 +38,23 @@ public class Grab_Item : MonoBehaviour
             {
                 touching = true;
                 colliderBox.transform.parent = transform;
+                colliderBox.transform.GetComponent<Box_script>().Holding();
             }
         }
+    }
+
+    public void Drop()
+    {
+        if (touching)
+        {
+            transform.GetChild(0).GetComponent<Box_script>().UnHolding();
+            transform.GetChild(0).SetParent(null);
+            Invoke("Check", 0.1f);
+        }
+    }
+
+    void Check()
+    {
+        touching = false;
     }
 }

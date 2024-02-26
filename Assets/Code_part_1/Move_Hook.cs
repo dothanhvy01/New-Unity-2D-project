@@ -8,32 +8,48 @@ using static UnityEditor.PlayerSettings;
 
 public class Move_Hook : MonoBehaviour
 {
-    [SerializeField] Transform[] movePoss;
+    [SerializeField] private List<Transform> movePoss;
+    [SerializeField] private bool moving = false;
     public float hookSpeed = 1f;
-    public bool moving = false;
+    public Transform lever;
 
     private bool touching;
     private Grab_Item gi;
     private Vector2 initialPos;
     private bool back = false;
     private int currentIndex = 0;
+    private string currentStage;
 
     void Start()
     {
         gi = transform.GetComponent<Grab_Item>();
         initialPos = transform.position;
+
+        for (int i = 0; i < movePoss.Count; i++)
+        {
+            if (movePoss[i] == null)
+            {
+                movePoss.RemoveAt(i);
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (movePoss != null && movePoss.Length > 0 && moving)
+        if (currentIndex < 0)
         {
             currentIndex = 0;
-            StartCoroutine(MoveToNextPosition());
-            moving = false;
         }
-        if (touching && back)
+        if (movePoss.Count > 0 && moving && currentStage != "Lever_off")
+        {
+            currentIndex = 0;
+            moving = false;
+            currentStage = "Lever_on";
+            ChangeStage(currentStage);
+            StartCoroutine(MoveToNextPosition());
+        }
+        if (touching || back)
         {
             StartCoroutine(MoveBackToNextPosition());
             back = false;
@@ -46,7 +62,7 @@ public class Move_Hook : MonoBehaviour
     }
     IEnumerator MoveToNextPosition()
     {
-        while (currentIndex < movePoss.Length)
+        while (currentIndex < movePoss.Count)
         {
             Transform target = movePoss[currentIndex];
 
@@ -56,10 +72,10 @@ public class Move_Hook : MonoBehaviour
                 yield return null;
             }
 
-            if (currentIndex == movePoss.Length - 1 || touching)
+            if (currentIndex == movePoss.Count - 1 || touching)
             {
                 back = true;
-                currentIndex = movePoss.Length - 1 - (movePoss.Length - currentIndex);
+                currentIndex = movePoss.Count - 1 - (movePoss.Count - currentIndex);
                 yield break;
             }
 
@@ -73,15 +89,16 @@ public class Move_Hook : MonoBehaviour
         {
             while (currentIndex >= 0)
             {
+                if (currentIndex == 0)
+                {
+                    yield return MoveToBasePosition();
+                    yield break;
+                }
                 Vector2 targetPosition = movePoss[currentIndex].position;
                 while ((Vector2)transform.position != targetPosition)
                 {
                     transform.position = Vector2.MoveTowards(transform.position, targetPosition, hookSpeed * Time.deltaTime);
                     yield return null;
-                }
-                if (currentIndex == 0)
-                {
-                    yield return MoveToBasePosition();
                 }
                 currentIndex--;
             }
@@ -95,5 +112,22 @@ public class Move_Hook : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, initialPos, hookSpeed * Time.deltaTime);
             yield return null;
         }
+        DropItem();
+    }
+
+    void DropItem()
+    {
+        gi.Drop();
+        ChangeStage("Lever_off");
+    }
+
+    public void Move()
+    {
+        if(((Vector2)transform.position == initialPos)) moving = true;
+    }
+
+    void ChangeStage(string stage)
+    {
+        lever.GetComponent<Lever_Scipt>().ChangeStage(stage);
     }
 }
