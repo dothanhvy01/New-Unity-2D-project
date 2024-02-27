@@ -14,9 +14,11 @@ public class Frog_Movement : MonoBehaviour
     public float moveSpeed = 5f;
     public float jumpDelayTime = 1f;
     public bool moving = false;
+    public bool isFacingRight;
 
     void Start()
     {
+        isFacingRight = true;
         rb = transform.GetComponent<Rigidbody2D>();
         an = transform.GetComponent<Animator>();
         cl = transform.GetComponent<Collider2D>();
@@ -40,8 +42,18 @@ public class Frog_Movement : MonoBehaviour
     {
         if (isGrounded)
         {
-            rb.velocity = new Vector2(moveSpeed, jumpForce);
+
+            //rb.velocity = new Vector2(moveSpeed, jumpForce);
+            if (isFacingRight)
+            {
+                rb.velocity = new Vector2(jumpForce, jumpForce);
+            }
+            else
+            {
+                rb.velocity = new Vector2(-jumpForce, jumpForce);
+            }
             an.SetBool("isJumping", true);
         }
     }
+   
 }

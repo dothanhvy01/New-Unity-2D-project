@@ -10,6 +10,8 @@ TagManager:
   - switch_mode
   - trap
   - floor
+  - Entrance
+  - Exit
   layers:
   - Default
   - TransparentFX
