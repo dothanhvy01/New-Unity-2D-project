@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9d1fc7025f52eb44ca58dffb92eb9d15
+guid: 281fbb3f0734b834dbed47a1327b2524
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 120
+  spritePixelsToUnits: 30
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,34 +123,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lever_sprite_0
+      name: InsideHouse_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 256
-        height: 255
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 275
+        y: 126
+        width: 51
+        height: 28
+      alignment: 9
+      pivot: {x: 0.505992, y: 0.5821678}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ad2bcb5e3ed75f47bb76690f9197c61
-      internalID: 422946443
+      spriteID: f299d1b6027ce8e4d8e901fc34b6ed4e
+      internalID: -653956191
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lever_sprite_1
+      name: InsideHouse_1
       rect:
         serializedVersion: 2
-        x: 256
-        y: 0
-        width: 256
-        height: 255
+        x: 275
+        y: 98
+        width: 51
+        height: 23
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b689eb887fdf9542b72229a3539f261
-      internalID: 1029216904
+      spriteID: 4550ff2d3d85cea47b899e2c20f128f4
+      internalID: 2022216174
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lever_sprite_2
+      name: InsideHouse_2
       rect:
         serializedVersion: 2
-        x: 512
-        y: 0
-        width: 256
-        height: 255
+        x: 274
+        y: 52
+        width: 56
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,8 +179,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6623041a139539e4eaa8765eb87c9ea9
-      internalID: -92035182
+      spriteID: a8e4e91743dcbbb468a88b19d2a88f82
+      internalID: 1375023861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InsideHouse_3
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 56
+        width: 53
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a837199dddd146348b173c5e7a26f629
+      internalID: 1559666504
       vertices: []
       indices: 
       edges: []
@@ -196,9 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Lever_sprite_0: 422946443
-      Lever_sprite_1: 1029216904
-      Lever_sprite_2: -92035182
+      InsideHouse_0: -653956191
+      InsideHouse_1: 2022216174
+      InsideHouse_2: 1375023861
+      InsideHouse_3: 1559666504
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9d1fc7025f52eb44ca58dffb92eb9d15
+guid: bec9024f9d2a396438a4eee37b7b49a0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 120
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Lever_sprite_0
+      name: Door (3)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 256
-        height: 255
+        width: 64
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ad2bcb5e3ed75f47bb76690f9197c61
-      internalID: 422946443
+      spriteID: 8141a8acefd25e04fac33fb03c5925ad
+      internalID: 312773998
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lever_sprite_1
+      name: Door (3)_1
       rect:
         serializedVersion: 2
-        x: 256
+        x: 64
         y: 0
-        width: 256
-        height: 255
+        width: 64
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5b689eb887fdf9542b72229a3539f261
-      internalID: 1029216904
+      spriteID: bb7a2169cc240dd46a28856bc30c3945
+      internalID: 1104739649
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Lever_sprite_2
+      name: Door (3)_2
       rect:
         serializedVersion: 2
-        x: 512
+        x: 128
         y: 0
-        width: 256
-        height: 255
+        width: 64
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6623041a139539e4eaa8765eb87c9ea9
-      internalID: -92035182
+      spriteID: 819616a8dfa06c543b3b2c9f30d48e9c
+      internalID: -1662666103
       vertices: []
       indices: 
       edges: []
@@ -196,9 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Lever_sprite_0: 422946443
-      Lever_sprite_1: 1029216904
-      Lever_sprite_2: -92035182
+      Door (3)_0: 312773998
+      Door (3)_1: 1104739649
+      Door (3)_2: -1662666103
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -12,6 +12,7 @@ public class Move_Hook : MonoBehaviour
     [SerializeField] private bool moving = false;
     public float hookSpeed = 1f;
     public Transform lever;
+    public bool autoDrop = false;
 
     private bool touching;
     private Grab_Item gi;
@@ -54,6 +55,10 @@ public class Move_Hook : MonoBehaviour
             StartCoroutine(MoveBackToNextPosition());
             back = false;
         }
+        //if (((Vector2)transform.position == initialPos) && autoDrop)
+        //{
+        //    DropItem();
+        //}
     }
 
     private void FixedUpdate()
@@ -112,13 +117,19 @@ public class Move_Hook : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, initialPos, hookSpeed * Time.deltaTime);
             yield return null;
         }
-        DropItem();
+        if (autoDrop)
+        {
+            DropItem();
+        }
     }
 
     void DropItem()
     {
-        gi.Drop();
-        ChangeStage("Lever_off");
+        if (touching)
+        {
+            gi.Drop();
+            ChangeStage("Lever_off");
+        }
     }
 
     public void Move()
