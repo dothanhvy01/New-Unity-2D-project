@@ -6,12 +6,13 @@ public class Teleport : MonoBehaviour
 {
     public GameObject entrance, exit;
     Frog_Movement frog_Movement;
-    Animator animator;
+    Animator entrance_Animator, exit_Animator;
     public bool touch = false;
     void Start()
     {
         frog_Movement = FindObjectOfType<Frog_Movement>();
-        animator = GetComponent<Animator>();
+        entrance_Animator = entrance.GetComponent<Animator>();
+        exit_Animator = exit.GetComponent<Animator>();
     }
 
     
@@ -29,17 +30,17 @@ public class Teleport : MonoBehaviour
         collision.gameObject.transform.localScale = currentScale;
         collision.gameObject.transform.position = exit.transform.position;
         frog_Movement.isFacingRight = false;
-        collision.gameObject.SetActive(true);
-
         yield return new WaitForSeconds(1f);
-
-        animator.SetBool("touch", false);
+        collision.gameObject.SetActive(true);
+        entrance_Animator.SetBool("touch", false);
+        exit_Animator.SetBool("touch", false);
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            animator.SetBool("touch", true);
+            entrance_Animator.SetBool("touch", true);
+            exit_Animator.SetBool("touch", true);
             if (gameObject.CompareTag(entrance.tag))
             {
                 StartCoroutine(ResetAnimation(collision));
