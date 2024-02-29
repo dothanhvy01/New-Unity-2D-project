@@ -5,7 +5,10 @@ using UnityEngine.Events;
 
 public class Click_Script : MonoBehaviour
 {
-    public UnityEvent click;
+    [System.Serializable]
+    public class Vector2Event : UnityEvent<Vector2> { }
+
+    public Vector2Event click;
     public bool repeat = false;
 
     private bool isClick = false;
@@ -16,7 +19,7 @@ public class Click_Script : MonoBehaviour
     {
         if (isClick && clickCheck)
         {
-            click.Invoke();
+            click.Invoke(transform.position);
             clickCheck = false;
             if (repeat)
             {
