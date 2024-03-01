@@ -24,11 +24,10 @@ public class Frog_Movement : MonoBehaviour
 
     void Update()
     {
-        isGrounded = Physics2D.IsTouchingLayers(cl, groundLayer);
-
-        if (moving && isGrounded)
+        if (moving)
         {
-            Invoke("Jump", jumpDelayTime);
+            GroundCheck();
+            if (isGrounded) Invoke("Jump", jumpDelayTime);
         }
     }
     private void FixedUpdate()
@@ -43,5 +42,21 @@ public class Frog_Movement : MonoBehaviour
             rb.velocity = new Vector2(moveSpeed, jumpForce);
             an.SetBool("isJumping", true);
         }
+    }
+
+    void GroundCheck()
+    {
+        Vector2 checkPosition = transform.position - Vector3.up * 1f;
+
+        RaycastHit2D hit = Physics2D.Raycast(checkPosition, -Vector2.up, 0.5f, groundLayer);
+
+        if (hit.collider != null) isGrounded = true;
+
+        else isGrounded = false;
+    }
+
+    private void OnMouseDown()
+    {
+        moving = true;
     }
 }
