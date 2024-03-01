@@ -8,6 +8,7 @@ public class Teleport : MonoBehaviour
     Frog_Movement frog_Movement;
     Animator entrance_Animator, exit_Animator;
     public bool touch = false;
+ 
     void Start()
     {
         frog_Movement = FindObjectOfType<Frog_Movement>();
@@ -18,7 +19,7 @@ public class Teleport : MonoBehaviour
     
     void Update()
     {
-        
+      
     }
     IEnumerator ResetAnimation(Collision2D collision)
     {
