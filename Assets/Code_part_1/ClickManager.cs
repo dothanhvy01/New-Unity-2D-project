@@ -22,15 +22,19 @@ public class ClickManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && Time.time - lastClickTime >= clickCooldown)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            RaycastHit2D hit;
-
+            Ray2D ray = new Ray2D(mousePosition, Vector2.zero);
 
             lastClickTime = Time.time;
-            if (hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity, clickableLayer))
+
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
+            if (hit.collider != null)
             {
-                Debug.Log("Click: " + hit.collider.gameObject.name);
+                if (hit.collider.CompareTag("ClickedObject"))
+                {
+                    Debug.Log("Click: " + hit.collider.gameObject.name);
+                }
             }
             else
             {

@@ -6,13 +6,11 @@ using UnityEngine.Events;
 public class Door_Scipt : MonoBehaviour
 {
     private bool isOpen = false;
-    private BoxCollider2D cl;
     private Animator an;
 
     // Start is called before the first frame update
     void Start()
     {
-        cl = transform.GetComponent<BoxCollider2D>();
         an = transform.GetComponent<Animator>();
     }
 
@@ -22,7 +20,6 @@ public class Door_Scipt : MonoBehaviour
         if (isOpen)
         {
             an.Play("Door_open");
-            cl.isTrigger = true;
         }
     }
 

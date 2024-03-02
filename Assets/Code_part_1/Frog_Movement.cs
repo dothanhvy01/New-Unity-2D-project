@@ -4,30 +4,35 @@ using UnityEngine;
 
 public class Frog_Movement : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private Animator an;
-    private bool isGrounded = false;
-    private Collider2D cl;
-
     public LayerMask groundLayer;
     public float jumpForce = 5f;
     public float moveSpeed = 5f;
     public float jumpDelayTime = 1f;
     public bool moving = false;
+    public float groundChackDistance = 0.1f;
+
+    private Rigidbody2D rb;
+    private Animator an;
+    private bool isGrounded = false;
+    private float jumpCooldown = 0.8f;
+    private float lastJumpTime = 0f;
 
     void Start()
     {
         rb = transform.GetComponent<Rigidbody2D>();
         an = transform.GetComponent<Animator>();
-        cl = transform.GetComponent<Collider2D>();
     }
 
     void Update()
     {
-        if (moving)
+        if (moving && Time.time - lastJumpTime >= jumpCooldown)
         {
             GroundCheck();
-            if (isGrounded) Invoke("Jump", jumpDelayTime);
+            if (isGrounded)
+            {
+                Jump();
+                lastJumpTime = Time.time;
+            }
         }
     }
     private void FixedUpdate()
@@ -46,9 +51,8 @@ public class Frog_Movement : MonoBehaviour
 
     void GroundCheck()
     {
-        Vector2 checkPosition = transform.position - Vector3.up * 1f;
 
-        RaycastHit2D hit = Physics2D.Raycast(checkPosition, -Vector2.up, 0.5f, groundLayer);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundChackDistance, groundLayer);
 
         if (hit.collider != null) isGrounded = true;
 

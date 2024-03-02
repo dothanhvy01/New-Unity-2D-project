@@ -9,8 +9,8 @@ using UnityEngine.Events;
 public class Key_Script : MonoBehaviour
 {
 
-    public int boxCount;
-    public Transform door;
+    public int clickLimit;
+    public List<Transform> doors;
     public float keySpeed = 2f;
 
     private int boxNumber;
@@ -23,7 +23,7 @@ public class Key_Script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        boxNumber = Random.Range(1, boxCount);
+        boxNumber = Random.Range(1, clickLimit);
         sr = transform.GetComponent<SpriteRenderer>();
         sr.enabled = false;
     }
@@ -39,9 +39,9 @@ public class Key_Script : MonoBehaviour
 
     public void RandomOpen(Vector2 BoxPos)
     {
-            int RandomNuumber = Random.Range(0, boxCount);
+            int RandomNuumber = Random.Range(0, clickLimit);
             currentClick++;
-            if (RandomNuumber == boxNumber || currentClick == boxCount)
+            if (RandomNuumber == boxNumber || currentClick == clickLimit)
             {
                 clickPos = BoxPos;
                 isOpen = true;
@@ -53,14 +53,16 @@ public class Key_Script : MonoBehaviour
         sr.enabled = true;
         transform.position = clickPos;
         t += Time.deltaTime * keySpeed;
-        //t = Mathf.Clamp01(t);
-        Vector2 curvePosition = Vector2.Lerp(transform.position, door.position, t);
+        Vector2 curvePosition = Vector2.Lerp(transform.position, doors[0].position, t);
         transform.position = curvePosition;
-        if (Vector3.Distance(transform.position, door.position) <= 0.5f)
+        if (Vector3.Distance(transform.position, doors[0].position) <= 0.5f)
         {
-            door.GetComponent<Door_Scipt>().OpenDoor();
-            isOpen = false;
-            Destroy(transform.gameObject);
+            for (int i = 0; i < doors.Count; i++)
+            {
+                doors[i].GetComponent<Door_Scipt>().OpenDoor();
+                isOpen = false;
+                Destroy(transform.gameObject);
+            }
         }
     }
 }

@@ -10,6 +10,7 @@ TagManager:
   - switch_mode
   - trap
   - floor
+  - ClickedObject
   layers:
   - Default
   - TransparentFX
