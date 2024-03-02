@@ -8,9 +8,10 @@ public class Move_Item : MonoBehaviour
     public List<GameObject> listPosition;
     private int currentIndex = 0;
     Animator animator;
-    public AnimationClip animation;
+    public new AnimationClip animation;
     public bool endMark;
     public bool enableToCLick = false;
+    bool clicked = false;
     private void Start()
     {
         endMark = false;
@@ -27,8 +28,10 @@ public class Move_Item : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (enableToCLick)
+    
+        if (enableToCLick && !clicked)
         {
+            clicked = true;
             MoveToPositions();
         }
 
@@ -53,27 +56,21 @@ public class Move_Item : MonoBehaviour
     }
     void PlaySpecialAnimation()
     {
-
-
-        try
+        if (animation!=null)
         {
             animator.SetBool("endmark", true);
-            
             StartCoroutine(ReturnToDefaultState(animation.length));
-           
         }
-        catch(Exception e)
-        {
 
-        }
+
     }
 
     IEnumerator ReturnToDefaultState(float delay)
     {
-        
+        endMark = true;
         yield return new WaitForSeconds(delay/5);
         animator.SetBool("endmark", false);
-        endMark = true;
+       
       
     }
 }

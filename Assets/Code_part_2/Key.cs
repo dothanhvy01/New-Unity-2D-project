@@ -7,10 +7,7 @@ public class Key : MonoBehaviour
     public bool canClick = false;
     public Move_Item move_item;
     public GameObject chest;
-    void Start()
-    {
-        
-    }
+    public List<GameObject> chestItem;
     IEnumerator Delay(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -28,6 +25,11 @@ public class Key : MonoBehaviour
         {
             chest.GetComponent<Animator>().SetBool("endmark", true);
             StartCoroutine(Delay(1f));
+            chest.SetActive(false);
+            foreach (var item in chestItem)
+            {
+                item.gameObject.SetActive(true);
+            }
             return;
         }
     }

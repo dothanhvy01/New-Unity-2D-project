@@ -7,13 +7,10 @@ public class PickExe : MonoBehaviour
     public Move_Item move_item;
     public List<GameObject> blocks;
     public bool endMark = false;
-    void Start()
-    {
-     
-    }
 
   IEnumerator Delay(float delay)
     {
+        endMark = true;
         yield return new WaitForSeconds(delay);
         gameObject.SetActive(false);
     }
@@ -25,9 +22,8 @@ public class PickExe : MonoBehaviour
             {
                 block.SetActive(false);
             }
-            endMark = true;
             StartCoroutine(Delay(1f));
-           
+            return;
           
         }
       

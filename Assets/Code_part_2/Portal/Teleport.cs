@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Teleport : MonoBehaviour
@@ -45,8 +44,6 @@ public class Teleport : MonoBehaviour
             if (gameObject.CompareTag(entrance.tag))
             {
                 StartCoroutine(ResetAnimation(collision));
-
-
             }
           
            

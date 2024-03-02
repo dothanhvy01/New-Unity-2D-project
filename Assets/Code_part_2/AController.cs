@@ -10,6 +10,7 @@ public abstract class AController : MonoBehaviour
     public bool isWin = false;
     public Scene sceneLoaded;
     public Frog_Movement frog;
+    public bool portalCondition = false;
     public abstract void Start();
    
     public abstract void Update();

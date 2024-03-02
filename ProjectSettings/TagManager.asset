@@ -4,14 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - day
-  - night
-  - hidden_land
-  - switch_mode
-  - trap
-  - floor
   - Entrance
   - Exit
+  - EndCrysto
+  - Fire
   layers:
   - Default
   - TransparentFX

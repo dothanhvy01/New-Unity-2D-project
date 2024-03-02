@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 086b15350171708459df17b250db2acd
+guid: de6d97ba40b863246a9f7ea21ae36fde
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 300
+  spritePixelsToUnits: 35
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Crystal_0
+      name: Fire_22
       rect:
         serializedVersion: 2
-        x: 24
-        y: 423
-        width: 248
-        height: 218
+        x: 909
+        y: 199
+        width: 197
+        height: 172
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 90d3f2d2e6204a841bb05df76a850b10
-      internalID: -253973328
+      spriteID: 185e8b37cb8ed3846899223894207ffc
+      internalID: 698601846
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crystal_1
+      name: Fire_24
       rect:
         serializedVersion: 2
-        x: 339
-        y: 432
-        width: 273
-        height: 280
+        x: 29
+        y: 23
+        width: 236
+        height: 174
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ff9544006015ed42b67899c86093471
-      internalID: -1071886774
+      spriteID: 2a3ac72ae14e4554eac5fdd09d727cc3
+      internalID: -1880341013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Crystal_2
+      name: Fire_26
       rect:
         serializedVersion: 2
-        x: 668
-        y: 403
-        width: 283
-        height: 281
+        x: 467
+        y: 30
+        width: 195
+        height: 169
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,113 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 456cead265e76784395778faac09e355
-      internalID: 273661807
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crystal_3
-      rect:
-        serializedVersion: 2
-        x: 966
-        y: 413
-        width: 257
-        height: 270
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 42affeffd864dc14b84f8a5460c05908
-      internalID: -762270416
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crystal_4
-      rect:
-        serializedVersion: 2
-        x: 47
-        y: 131
-        width: 238
-        height: 238
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e7d750a014a575f448599819be5bccb8
-      internalID: 1745742744
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crystal_5
-      rect:
-        serializedVersion: 2
-        x: 363
-        y: 140
-        width: 223
-        height: 216
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 042e89130889ca54796940dcf859d1b8
-      internalID: -1037334684
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crystal_6
-      rect:
-        serializedVersion: 2
-        x: 651
-        y: 124
-        width: 235
-        height: 253
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0394ffb01a1c76c4594309d691a6d02e
-      internalID: 378696433
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Crystal_7
-      rect:
-        serializedVersion: 2
-        x: 1000
-        y: 141
-        width: 212
-        height: 218
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 86d213a6d816e9d40bf70827068de655
-      internalID: 48113309
+      spriteID: 208fbef91db0dff468e3c81dbf310022
+      internalID: 1101366990
       vertices: []
       indices: 
       edges: []
@@ -301,14 +196,34 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Crystal_0: -253973328
-      Crystal_1: -1071886774
-      Crystal_2: 273661807
-      Crystal_3: -762270416
-      Crystal_4: 1745742744
-      Crystal_5: -1037334684
-      Crystal_6: 378696433
-      Crystal_7: 48113309
+      Fire_0: 1931584032
+      Fire_1: -1882712928
+      Fire_10: 1503083739
+      Fire_11: 1896498783
+      Fire_12: 505708045
+      Fire_13: -731892438
+      Fire_14: 1190369338
+      Fire_15: -105364321
+      Fire_16: -1701761023
+      Fire_17: 1896570122
+      Fire_18: -2030704167
+      Fire_19: -2030567623
+      Fire_2: -313654077
+      Fire_20: 2032561793
+      Fire_21: -1707883569
+      Fire_22: 698601846
+      Fire_23: -824810851
+      Fire_24: -1880341013
+      Fire_25: 204070958
+      Fire_26: 1101366990
+      Fire_27: -1739824135
+      Fire_3: 1282927130
+      Fire_4: -934088941
+      Fire_5: 328671799
+      Fire_6: -1157368213
+      Fire_7: -2122991167
+      Fire_8: -22891791
+      Fire_9: -902625016
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
