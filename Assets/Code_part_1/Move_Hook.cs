@@ -38,6 +38,8 @@ public class Move_Hook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        touching = gi.touching;
+
         if (currentIndex < 0)
         {
             currentIndex = 0;
@@ -57,10 +59,6 @@ public class Move_Hook : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        touching = gi.touching;
-    }
     IEnumerator MoveToNextPosition()
     {
         while (currentIndex < movePoss.Count)
@@ -126,6 +124,11 @@ public class Move_Hook : MonoBehaviour
         }
     }
 
+    private void OnMouseDown()
+    {
+        DropItem();
+    }
+
     public void Move()
     {
         if(((Vector2)transform.position == initialPos)) moving = true;
@@ -133,6 +136,9 @@ public class Move_Hook : MonoBehaviour
 
     void ChangeStage(string stage)
     {
-        lever.GetComponent<Lever_Scipt>().ChangeStage(stage);
+        if (lever != null)
+        {
+            lever.GetComponent<Lever_Scipt>().ChangeStage(stage);
+        }
     }
 }

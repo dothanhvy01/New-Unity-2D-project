@@ -50,18 +50,21 @@ public class Key_Script : MonoBehaviour
 
     private void KeyMove()
     {
-        sr.enabled = true;
-        transform.position = clickPos;
-        t += Time.deltaTime * keySpeed;
-        Vector2 curvePosition = Vector2.Lerp(transform.position, doors[0].position, t);
-        transform.position = curvePosition;
-        if (Vector3.Distance(transform.position, doors[0].position) <= 0.5f)
+        if (doors.Count >= 1)
         {
-            for (int i = 0; i < doors.Count; i++)
+            sr.enabled = true;
+            transform.position = clickPos;
+            t += Time.deltaTime * keySpeed;
+            Vector2 curvePosition = Vector2.Lerp(transform.position, doors[0].position, t);
+            transform.position = curvePosition;
+            if (Vector3.Distance(transform.position, doors[0].position) <= 0.5f)
             {
-                doors[i].GetComponent<Door_Scipt>().OpenDoor();
-                isOpen = false;
-                Destroy(transform.gameObject);
+                for (int i = 0; i < doors.Count; i++)
+                {
+                    doors[i].GetComponent<Door_Scipt>().OpenDoor();
+                    isOpen = false;
+                    Destroy(transform.gameObject);
+                }
             }
         }
     }

@@ -20,7 +20,10 @@ public class Bridge_Script : MonoBehaviour
 
     private void OnMouseDown()
     {
-        ChangeStage(!currentStage);
+        if (an != null )
+        {
+            ChangeStage(!currentStage);
+        }
     }
 
     private void ChangeStage(bool Stage)

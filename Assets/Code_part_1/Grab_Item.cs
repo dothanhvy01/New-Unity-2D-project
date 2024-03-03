@@ -36,14 +36,12 @@ public class Grab_Item : MonoBehaviour
             }
         }
     }
-
     public void Drop()
     {
         Invoke("Check", 0.1f);
         transform.GetChild(0).GetComponent<Box_script>().UnHolding();
         transform.GetChild(0).SetParent(null);
     }
-
     void Check()
     {
         touching = false;

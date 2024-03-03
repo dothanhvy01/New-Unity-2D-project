@@ -11,6 +11,7 @@ TagManager:
   - trap
   - floor
   - ClickedObject
+  - Frog
   layers:
   - Default
   - TransparentFX

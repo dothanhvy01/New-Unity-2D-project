@@ -2,19 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClickManager : MonoBehaviour
+public class MapManager : MonoBehaviour
 {
     public LayerMask clickableLayer;
+    [SerializeField] private GameObject frog;
+    [SerializeField] private GameObject messBox;
 
-    private GameObject messBox;
     private float clickCooldown = 1.5f;
     private float lastClickTime = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        messBox = GameObject.Find("MessBox");
-        messBox.SetActive(false);
+        if (frog != null && messBox != null)
+        {
+            messBox.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -29,12 +32,10 @@ public class ClickManager : MonoBehaviour
             lastClickTime = Time.time;
 
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, ray.direction);
-            if (hit.collider != null)
+
+            if (hit.collider != null && hit.collider.CompareTag("ClickedObject"))
             {
-                if (hit.collider.CompareTag("ClickedObject"))
-                {
-                    Debug.Log("Click: " + hit.collider.gameObject.name);
-                }
+                Debug.Log("Click: " + hit.collider.gameObject.name);
             }
             else
             {
@@ -42,6 +43,10 @@ public class ClickManager : MonoBehaviour
 
                 Invoke("Close", 1.5f);
             }
+        }
+        if (frog.GetComponent<Frog_Movement>().moving == true)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
