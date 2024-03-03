@@ -33,7 +33,7 @@ public class Jung1_Controller : AController
         if (!crystalStateSet)
         {
             if (endCrystal.endMark) {
-                endMarkPortal.end = true;
+                endMarkPortal.visible = true;
             }
         }
         if (isWin && portalCondition)

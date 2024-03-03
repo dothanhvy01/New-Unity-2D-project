@@ -6,7 +6,7 @@ using UnityEngine;
 public class EndMarkPortal : MonoBehaviour
 {
     public AController controller;
-    public bool end = false;
+    public bool visible = false;
     public GameObject crysto;
     Animator animator;
     private void Start()
@@ -15,7 +15,7 @@ public class EndMarkPortal : MonoBehaviour
     }
     private void Update()
     {
-        if (end)
+        if (visible)
         {
             crysto.SetActive(false);
             animator.SetBool("endmark", true);

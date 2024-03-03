@@ -5,10 +5,7 @@ using UnityEngine;
 
 public class FireCrysto_Jung1 : ADradAndDrop
 {
-    public override void Start()
-    {
-        
-    }
+  
 
     public override void Update()
     {
@@ -17,7 +14,7 @@ public class FireCrysto_Jung1 : ADradAndDrop
     private void OnMouseUp()
     {
         isDragging = false;
-        if (IsInDropArea("EndCrysto")) 
+        if (IsInDropArea(itemTag)) 
         {
             foreach (Transform childTransform in itemReact.transform) 
             {
