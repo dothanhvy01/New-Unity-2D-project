@@ -47,3 +47,6 @@ MonoBehaviour:
   clickableLayer:
     serializedVersion: 2
     m_Bits: 256
+  deadPrefab: {fileID: 16912792755509562, guid: d85b09bc3518ca248b84725a0a2f8854, type: 3}
+  frog: {fileID: 0}
+  messBox: {fileID: 0}

@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 357362497150761862}
   - component: {fileID: 7844094063469537214}
   - component: {fileID: 422747592258033156}
+  - component: {fileID: 612295301931936573}
   m_Layer: 8
   m_Name: Frog
   m_TagString: Untagged
@@ -305,6 +306,20 @@ MonoBehaviour:
     m_Bits: 64
   jumpForce: 3
   moveSpeed: 3
-  jumpDelayTime: 1
+  jumpDelayTime: 2
   moving: 0
   groundChackDistance: 0.65
+  deadPrefab: {fileID: 16912792755509562, guid: d85b09bc3518ca248b84725a0a2f8854, type: 3}
+--- !u!114 &612295301931936573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6338832167944455065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3cebfdfdf0c5d47bca53ee12f6645d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messBox: {fileID: 3483388653538659813}

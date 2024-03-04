@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
-public class MapManager : MonoBehaviour
+public class ClickManager : MonoBehaviour
 {
-    public LayerMask clickableLayer;
-    [SerializeField] private GameObject frog;
     [SerializeField] private GameObject messBox;
 
     private float clickCooldown = 1.5f;
@@ -14,7 +13,7 @@ public class MapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (frog != null && messBox != null)
+        if (messBox != null)
         {
             messBox.SetActive(false);
         }
@@ -43,10 +42,6 @@ public class MapManager : MonoBehaviour
 
                 Invoke("Close", 1.5f);
             }
-        }
-        if (frog.GetComponent<Frog_Movement>().moving == true)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 

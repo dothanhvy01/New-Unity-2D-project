@@ -12,6 +12,8 @@ TagManager:
   - floor
   - ClickedObject
   - Frog
+  - DeadObject
+  - BlockObject
   layers:
   - Default
   - TransparentFX

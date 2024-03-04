@@ -10,6 +10,7 @@ public class Frog_Movement : MonoBehaviour
     public float jumpDelayTime = 1f;
     public bool moving = false;
     public float groundChackDistance = 0.1f;
+    public GameObject deadPrefab;
 
     private Rigidbody2D rb;
     private Animator an;
@@ -62,5 +63,36 @@ public class Frog_Movement : MonoBehaviour
     private void OnMouseDown()
     {
         moving = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("BlockObject"))
+        {
+            BlockEvent();
+        }
+        if (collision.CompareTag("DeadObject"))
+        {
+            DeathEvent();
+        }
+    }
+
+    void DeathEvent()
+    {
+        transform.gameObject.SetActive(false);
+        GameObject newObject = Instantiate(deadPrefab, transform.position, Quaternion.identity);
+        float randomXVelocity = Random.Range(-5f, 5f);
+        float randomYVelocity = Random.Range(8f, 10f);
+
+        Rigidbody2D rb = newObject.GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = new Vector2(randomXVelocity, randomYVelocity);
+        }
+    }
+
+    void BlockEvent()
+    {
+
     }
 }
