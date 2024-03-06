@@ -39,6 +39,21 @@ public class Frog_Movement : MonoBehaviour
     private void FixedUpdate()
     {
         an.SetFloat("yVelocity", rb.velocity.y);
+
+        if (moving)
+        {
+            Vector3 worldPosition = transform.position;
+
+            Vector3 viewportPosition = Camera.main.WorldToViewportPoint(worldPosition);
+
+            bool isInViewport = viewportPosition.x >= 0 && viewportPosition.x <= 1
+                && viewportPosition.y >= 0 && viewportPosition.y <= 1;
+
+            if (!isInViewport)
+            {
+                DeathEvent();
+            }
+        }
     }
 
     void Jump()
@@ -65,13 +80,15 @@ public class Frog_Movement : MonoBehaviour
         moving = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("BlockObject"))
+        Collider2D collider = collision.collider;
+
+        if (collider.CompareTag("BlockObject"))
         {
             BlockEvent();
         }
-        if (collision.CompareTag("DeadObject"))
+        if (collider.CompareTag("DeadObject"))
         {
             DeathEvent();
         }
@@ -82,7 +99,7 @@ public class Frog_Movement : MonoBehaviour
         transform.gameObject.SetActive(false);
         GameObject newObject = Instantiate(deadPrefab, transform.position, Quaternion.identity);
         float randomXVelocity = Random.Range(-5f, 5f);
-        float randomYVelocity = Random.Range(8f, 10f);
+        float randomYVelocity = Random.Range(6f, 7f);
 
         Rigidbody2D rb = newObject.GetComponent<Rigidbody2D>();
         if (rb != null)
@@ -93,6 +110,8 @@ public class Frog_Movement : MonoBehaviour
 
     void BlockEvent()
     {
-
+        moving = false;
+        transform.GetComponent<ClickManager>().messBox.SetActive(true);
+        transform.GetComponent<ClickManager>().messBox.GetComponent<Animator>().Play("MessBox_over");
     }
 }

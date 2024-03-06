@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ClickManager : MonoBehaviour
 {
-    [SerializeField] private GameObject messBox;
+    public GameObject messBox;
 
     private float clickCooldown = 1.5f;
     private float lastClickTime = 0f;
