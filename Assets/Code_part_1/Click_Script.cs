@@ -26,6 +26,10 @@ public class Click_Script : MonoBehaviour
                 isClick = false;
                 clickCheck = true;
             }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 

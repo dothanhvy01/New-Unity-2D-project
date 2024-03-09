@@ -6,16 +6,13 @@ using UnityEditor.Events;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Key_Script : MonoBehaviour
+public class Key_Script : invisible_Class
 {
-
+    [SerializeField] private float speed = 2f;
     public int clickLimit;
-    public List<Transform> doors;
-    public float keySpeed = 2f;
+    public Transform door;
 
     private int boxNumber;
-    private SpriteRenderer sr;
-    private float t = 0f;
     private Vector2 clickPos;
     private bool isOpen = false;
     private int currentClick = 0;
@@ -24,8 +21,7 @@ public class Key_Script : MonoBehaviour
     void Start()
     {
         boxNumber = Random.Range(1, clickLimit);
-        sr = transform.GetComponent<SpriteRenderer>();
-        sr.enabled = false;
+        DisableSprite();
     }
 
     // Update is called once per frame
@@ -37,34 +33,29 @@ public class Key_Script : MonoBehaviour
         }
     }
 
-    public void RandomOpen(Vector2 BoxPos)
+    public void RandomOpen(Vector2 ClickPosition)
     {
             int RandomNuumber = Random.Range(0, clickLimit);
             currentClick++;
             if (RandomNuumber == boxNumber || currentClick == clickLimit)
             {
-                clickPos = BoxPos;
+                transform.position = ClickPosition;
+                EnableSprite();
                 isOpen = true;
             }
     }
 
     private void KeyMove()
     {
-        if (doors.Count >= 1)
+        if (door != null)
         {
-            sr.enabled = true;
-            transform.position = clickPos;
-            t += Time.deltaTime * keySpeed;
-            Vector2 curvePosition = Vector2.Lerp(transform.position, doors[0].position, t);
-            transform.position = curvePosition;
-            if (Vector3.Distance(transform.position, doors[0].position) <= 0.5f)
+            Vector2 newPosition = Vector2.MoveTowards(transform.position, door.position, speed * Time.deltaTime);
+            transform.position = newPosition;
+            if (Vector3.Distance(transform.position, door.position) <= 0.1f)
             {
-                for (int i = 0; i < doors.Count; i++)
-                {
-                    doors[i].GetComponent<Door_Scipt>().OpenDoor();
-                    isOpen = false;
-                    Destroy(transform.gameObject);
-                }
+                door.GetComponent<Door_Scipt>().OpenDoor();
+                isOpen = false;
+                Destroy(gameObject);
             }
         }
     }
