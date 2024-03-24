@@ -121,9 +121,9 @@ GameObject:
   - component: {fileID: 7844094063469537214}
   - component: {fileID: 422747592258033156}
   - component: {fileID: 612295301931936573}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Frog
-  m_TagString: Untagged
+  m_TagString: Frog
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,7 +276,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.021784306, y: -0.06535268}
+  m_Offset: {x: 0.028695822, y: -0.07544872}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -287,7 +287,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4356852, y: 1.0771785}
+  m_Size: {x: 1.3145328, y: 0.95602614}
   m_EdgeRadius: 0
 --- !u!114 &422747592258033156
 MonoBehaviour:

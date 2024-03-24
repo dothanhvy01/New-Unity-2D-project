@@ -35,4 +35,32 @@ public class Box_script : MonoBehaviour
     {
         isHolding = false;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //if (collision.CompareTag("DeadObject"))
+        //{
+        //    collision.GetComponent<Collider2D>().isTrigger = true;
+        //    Debug.Log(collision.transform);
+        //}
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Frog"))
+        {
+            collision.transform.SetParent(transform);
+        }
+        if (collision.gameObject.CompareTag("DeadObject"))
+        {
+            collision.gameObject.GetComponent<Collider2D>().isTrigger = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Frog"))
+        {
+            collision.transform.SetParent(null);
+        }
+    }
 }

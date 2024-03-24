@@ -88,16 +88,16 @@ public class Move_Hook : MonoBehaviour
         {
             while (currentIndex >= 0)
             {
-                if (currentIndex == 0)
-                {
-                    yield return MoveToBasePosition();
-                    yield break;
-                }
                 Vector2 targetPosition = movePoss[currentIndex].position;
                 while ((Vector2)transform.position != targetPosition)
                 {
                     transform.position = Vector2.MoveTowards(transform.position, targetPosition, hookSpeed * Time.deltaTime);
                     yield return null;
+                }
+                if (currentIndex == 0)
+                {
+                    yield return MoveToBasePosition();
+                    yield break;
                 }
                 currentIndex--;
             }

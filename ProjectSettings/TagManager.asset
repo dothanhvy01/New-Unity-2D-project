@@ -14,6 +14,7 @@ TagManager:
   - Frog
   - DeadObject
   - BlockObject
+  - FloatingObject
   layers:
   - Default
   - TransparentFX
