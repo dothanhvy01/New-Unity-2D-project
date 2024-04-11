@@ -4,33 +4,36 @@ using UnityEngine;
 
 public class Frog_Movement : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private Animator an;
-    private bool isGrounded = false;
-    private Collider2D cl;
-
     public LayerMask groundLayer;
     public float jumpForce = 5f;
     public float moveSpeed = 5f;
     public float jumpDelayTime = 1f;
     public bool moving = false;
-    public bool isFacingRight;
+    public float groundChackDistance = 0.1f;
+    public bool isFacingRight = true;
+
+    private Rigidbody2D rb;
+    private Animator an;
+    private bool isGrounded = false;
+    private float jumpCooldown = 0.8f;
+    private float lastJumpTime = 0f;
 
     void Start()
     {
-        isFacingRight = true;
         rb = transform.GetComponent<Rigidbody2D>();
         an = transform.GetComponent<Animator>();
-        cl = transform.GetComponent<Collider2D>();
     }
 
     void Update()
     {
-        isGrounded = Physics2D.IsTouchingLayers(cl, groundLayer);
-
-        if (moving && isGrounded)
+        if (moving && Time.time - lastJumpTime >= jumpCooldown)
         {
-            Invoke("Jump", jumpDelayTime);
+            GroundCheck();
+            if (isGrounded)
+            {
+                Jump();
+                lastJumpTime = Time.time;
+            }
         }
     }
     private void FixedUpdate()
@@ -42,18 +45,32 @@ public class Frog_Movement : MonoBehaviour
     {
         if (isGrounded)
         {
-
-            //rb.velocity = new Vector2(moveSpeed, jumpForce);
             if (isFacingRight)
             {
-                rb.velocity = new Vector2(jumpForce, jumpForce);
+                rb.velocity = new Vector2(moveSpeed, jumpForce);
             }
             else
             {
-                rb.velocity = new Vector2(-jumpForce, jumpForce);
+                rb.velocity = new Vector2(-moveSpeed, jumpForce);
             }
             an.SetBool("isJumping", true);
         }
+      
+      
     }
-   
+
+    void GroundCheck()
+    {
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, groundChackDistance, groundLayer);
+
+        if (hit.collider != null) isGrounded = true;
+
+        else isGrounded = false;
+    }
+
+    private void OnMouseDown()
+    {
+        moving = true;
+    }
 }

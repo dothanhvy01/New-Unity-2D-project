@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class Fly_Land : MonoBehaviour
 {
-    public float floatSpeed = 0.5f; 
-    public float floatHeight = 0.5f; 
-    public float amplitude = 0.5f; 
+    public float floatSpeed = 0.5f;
+    public float amplitude = 0.5f;
     public bool vertical = true; 
     private Vector3 startPos;
     public bool fly = true;

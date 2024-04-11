@@ -6,7 +6,7 @@ public class Teleport : MonoBehaviour
     public GameObject entrance, exit;
     Frog_Movement frog_Movement;
     Animator entrance_Animator, exit_Animator;
-    public bool touch = false;
+    public bool swapFacing = false;
  
     void Start()
     {
@@ -29,7 +29,7 @@ public class Teleport : MonoBehaviour
         currentScale.x *= -1;
         collision.gameObject.transform.localScale = currentScale;
         collision.gameObject.transform.position = exit.transform.position;
-        frog_Movement.isFacingRight = false;
+        frog_Movement.isFacingRight = swapFacing;
         yield return new WaitForSeconds(1f);
         collision.gameObject.SetActive(true);
         entrance_Animator.SetBool("touch", false);
