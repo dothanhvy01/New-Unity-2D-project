@@ -10,6 +10,11 @@ TagManager:
   - switch_mode
   - trap
   - floor
+  - ClickedObject
+  - Frog
+  - DeadObject
+  - BlockObject
+  - FloatingObject
   layers:
   - Default
   - TransparentFX
@@ -19,7 +24,7 @@ TagManager:
   - UI
   - Ground
   - Box
-  - 
+  - 'ClickedObject '
   - 
   - 
   - 

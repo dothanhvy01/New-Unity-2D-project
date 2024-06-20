@@ -7,7 +7,6 @@ using UnityEngine.Events;
 public class Grab_Item : MonoBehaviour
 {
     [SerializeField] private LayerMask itemLayer;
-    public bool drop = false;
 
     [HideInInspector] public bool touching = false;
     private BoxCollider2D cl;
@@ -20,11 +19,6 @@ public class Grab_Item : MonoBehaviour
 
     private void Update()
     {
-        if (drop)
-        {
-            Drop();
-            drop = false;
-        }
     }
 
     private void FixedUpdate()
@@ -42,17 +36,12 @@ public class Grab_Item : MonoBehaviour
             }
         }
     }
-
     public void Drop()
     {
-        if (touching)
-        {
-            transform.GetChild(0).GetComponent<Box_script>().UnHolding();
-            transform.GetChild(0).SetParent(null);
-            Invoke("Check", 0.1f);
-        }
+        Invoke("Check", 0.1f);
+        transform.GetChild(0).GetComponent<Box_script>().UnHolding();
+        transform.GetChild(0).SetParent(null);
     }
-
     void Check()
     {
         touching = false;

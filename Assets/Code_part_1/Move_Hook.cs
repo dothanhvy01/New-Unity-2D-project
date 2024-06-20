@@ -12,6 +12,7 @@ public class Move_Hook : MonoBehaviour
     [SerializeField] private bool moving = false;
     public float hookSpeed = 1f;
     public Transform lever;
+    public bool autoDrop = false;
 
     private bool touching;
     private Grab_Item gi;
@@ -37,6 +38,8 @@ public class Move_Hook : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        touching = gi.touching;
+
         if (currentIndex < 0)
         {
             currentIndex = 0;
@@ -56,10 +59,6 @@ public class Move_Hook : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        touching = gi.touching;
-    }
     IEnumerator MoveToNextPosition()
     {
         while (currentIndex < movePoss.Count)
@@ -89,16 +88,16 @@ public class Move_Hook : MonoBehaviour
         {
             while (currentIndex >= 0)
             {
-                if (currentIndex == 0)
-                {
-                    yield return MoveToBasePosition();
-                    yield break;
-                }
                 Vector2 targetPosition = movePoss[currentIndex].position;
                 while ((Vector2)transform.position != targetPosition)
                 {
                     transform.position = Vector2.MoveTowards(transform.position, targetPosition, hookSpeed * Time.deltaTime);
                     yield return null;
+                }
+                if (currentIndex == 0)
+                {
+                    yield return MoveToBasePosition();
+                    yield break;
                 }
                 currentIndex--;
             }
@@ -112,13 +111,22 @@ public class Move_Hook : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, initialPos, hookSpeed * Time.deltaTime);
             yield return null;
         }
-        DropItem();
+        if (autoDrop) DropItem();
+        if(!touching) ChangeStage("Lever_off");
     }
 
     void DropItem()
     {
-        gi.Drop();
-        ChangeStage("Lever_off");
+        if (touching)
+        {
+            gi.Drop();
+            ChangeStage("Lever_off");
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        DropItem();
     }
 
     public void Move()
@@ -128,6 +136,9 @@ public class Move_Hook : MonoBehaviour
 
     void ChangeStage(string stage)
     {
-        lever.GetComponent<Lever_Scipt>().ChangeStage(stage);
+        if (lever != null)
+        {
+            lever.GetComponent<Lever_Scipt>().ChangeStage(stage);
+        }
     }
 }
