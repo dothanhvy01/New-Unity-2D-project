@@ -6,16 +6,13 @@ using UnityEngine.SceneManagement;
 
 public abstract class AController : MonoBehaviour
 {
-    public bool isOver;
-    public bool isWin;
+    public bool isOver = false;
+    public bool isWin = false;
     public Scene sceneLoaded;
     public Frog_Movement frog;
-    void Start()
-    {
-        isOver = false;
-        isWin = false;
-        sceneLoaded = SceneManager.GetActiveScene();
-    }
+    public bool portalCondition = false;
+    public abstract void Start();
+   
     public abstract void Update();
     public void toNextScene()
     {
@@ -23,6 +20,7 @@ public abstract class AController : MonoBehaviour
         {
             try
             {
+                sceneLoaded = SceneManager.GetActiveScene();
                 SceneManager.LoadScene(sceneLoaded.buildIndex + 1);
             }catch(Exception e)
             {
